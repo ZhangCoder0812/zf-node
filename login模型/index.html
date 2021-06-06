@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="log_btn">登陆</button>
+    <button id="list_btn">获取列表</button>
+  </body>
+</html>
+<script>
+  log_btn.onclick = function () {
+    fetch("/login", {
+      method: "post",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+      // body: "name=wade&age=12",
+      // 若后端需要 formdata 格式 则要使用上面这种字符串 同时 Content-Type 要是 x-www-form-urlencoded
+      // 控制台 Request 是 Payload 就不用拼接了 直接使用下面这钟 同时 "Content-Type": "application/json"
+      body: JSON.stringify({ name: "zhufeng", age: 12 }),
+    });
+  };
+  list_btn.onclick = function () {
+    fetch("/list");
+  };
+</script>
