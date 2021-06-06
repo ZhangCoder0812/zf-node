@@ -16,12 +16,13 @@ let app = express();
 let bodyParser = require("body-parser");
 
 app.listen(3001, () => {
-  console.log('服务启动了@',3001);
+  console.log("服务启动了@", 3001);
 });
 
 app.use(express.static("../login模型"));
 app.use(bodyParser.json());
-let userqqid = "123";
+let userqqid = "123"; // 这里模拟简单使用了一个变量 只能有一个用户 多个用户可以用个json
+                      // 实际工作中这里要将每个用户标示存入数据库 每次接受到请求就再比对
 
 app.post("/login", (req, res) => {
   console.log(req.body);
