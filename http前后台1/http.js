@@ -53,7 +53,8 @@ app.listen(8080, () => {
 });
 
 app.use(express.static("../http前后台1"));
-// 给前段设置cookie 这里是同域设置cookie 跨域设置好像设置不上 跟携带资源凭证有关好像
+// 给前段设置cookie 这里是同域设置cookie 前段请求地址要是ip不能是localhost 
+// 否则种植不上
 app.use((req, res, next) => {
   res.header('set-cookie', 'aaa=123')
   next()
